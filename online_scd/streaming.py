@@ -57,7 +57,7 @@ class AudioStream2MelSpectrogram:
 
     def process_audio(self, audio):
         for frames in self.input_frame_generator.frames(audio):
-            single_feat = librosa.feature.melspectrogram(frames, sr=self.sample_rate,
+            single_feat = librosa.feature.melspectrogram(y=frames, sr=self.sample_rate,
                                             center=False,
                                             n_fft=int(2.5*self.sample_rate/100.0), hop_length=self.sample_rate//100,
                                             fmin=40, fmax=self.sample_rate//2-400, n_mels=self.num_fbanks)
